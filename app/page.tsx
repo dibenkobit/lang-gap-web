@@ -96,20 +96,31 @@ export default function Home() {
                         How It Works
                     </h2>
 
-                    <div className="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div className="rounded-xl border px-4 py-4 space-y-1.5">
                             <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                                Questions
+                                1 &middot; Questions
                             </p>
                             <p className="text-sm">
-                                Original problems — not pulled from existing
-                                datasets. Russian versions are written natively,
-                                not machine-translated.
+                                {latestReport.questionCount.coding} coding
+                                + {latestReport.questionCount.reasoning} reasoning
+                                problems, written from scratch. Russian versions
+                                are native — not machine-translated.
                             </p>
                         </div>
                         <div className="rounded-xl border px-4 py-4 space-y-1.5">
                             <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                                Evaluation
+                                2 &middot; Prompting
+                            </p>
+                            <p className="text-sm">
+                                Every question goes to every model through the
+                                same API with identical settings. Nothing varies
+                                between languages except the prompt itself.
+                            </p>
+                        </div>
+                        <div className="rounded-xl border px-4 py-4 space-y-1.5">
+                            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                                3 &middot; Evaluation
                             </p>
                             <p className="text-sm">
                                 Coding answers run against test cases. Reasoning
@@ -119,12 +130,12 @@ export default function Home() {
                         </div>
                         <div className="rounded-xl border px-4 py-4 space-y-1.5">
                             <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                                Controls
+                                4 &middot; The Gap
                             </p>
                             <p className="text-sm">
-                                All models are called through the same API with
-                                identical settings. Nothing varies between
-                                languages except the prompt.
+                                For each model: EN accuracy minus RU accuracy.
+                                A small gap means the model handles Russian well.
+                                A large gap means it degrades.
                             </p>
                         </div>
                     </div>
