@@ -16,15 +16,21 @@ export default function Home() {
         <div className="px-6 py-6 md:px-12 md:py-10 lg:px-16 lg:py-10">
             <div className="mx-auto max-w-3xl space-y-10">
                 <section id="methodology" className="scroll-mt-16">
-                    <aside className="rounded-lg bg-muted/40 px-4 py-3 space-y-1.5">
-                        <p className="text-xs font-medium text-muted-foreground">Methodology</p>
-                        <p className="text-xs text-muted-foreground leading-relaxed">
-                            100 original questions (50 coding, 50 reasoning), written from scratch
-                            to avoid benchmark contamination. Coding evaluated via sandbox
-                            execution; reasoning via answer extraction. All models called at
-                            temperature=0.
+                    <div className="rounded-lg border px-5 py-4 space-y-3">
+                        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                            Methodology
                         </p>
-                    </aside>
+                        <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 text-sm">
+                            <dt className="text-muted-foreground">Questions</dt>
+                            <dd>100 original · 50 coding, 50 reasoning</dd>
+                            <dt className="text-muted-foreground">Source</dt>
+                            <dd>Written from scratch (no leakage)</dd>
+                            <dt className="text-muted-foreground">Evaluation</dt>
+                            <dd>Sandbox execution + answer matching</dd>
+                            <dt className="text-muted-foreground">Controls</dt>
+                            <dd>temperature=0 via OpenRouter</dd>
+                        </dl>
+                    </div>
                 </section>
 
                 <section className="space-y-6">
