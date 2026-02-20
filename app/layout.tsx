@@ -19,7 +19,7 @@ export default function RootLayout({
     return (
         <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
             <body className="antialiased flex min-h-screen flex-col">
-                <DebugBanner />
+                {process.env.NODE_ENV === "production" && <DebugBanner />}
                 <Header />
                 <main className="flex-1">{children}</main>
                 <footer className="px-6 py-6 md:px-12 lg:px-16 border-t mt-16">
