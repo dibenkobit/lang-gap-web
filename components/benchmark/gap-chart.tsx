@@ -1,6 +1,6 @@
 "use client";
 
-import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
+import { Bar, BarChart, CartesianGrid, LabelList, XAxis, YAxis } from "recharts";
 import {
     type ChartConfig,
     ChartContainer,
@@ -12,8 +12,8 @@ import {
 import type { ModelResult } from "@/lib/data/report";
 
 const chartConfig = {
-    en: { label: "English", color: "oklch(0.55 0.15 250)" },
-    ru: { label: "Russian", color: "oklch(0.65 0.18 35)" }
+    en: { label: "English", color: "oklch(0.52 0.16 250)" },
+    ru: { label: "Russian", color: "oklch(0.64 0.19 35)" }
 } satisfies ChartConfig;
 
 export function GapChart({ data }: { data: ModelResult[] }) {
@@ -25,7 +25,7 @@ export function GapChart({ data }: { data: ModelResult[] }) {
 
     return (
         <ChartContainer config={chartConfig} className="h-[300px] w-full">
-            <BarChart data={chartData} barGap={2}>
+            <BarChart data={chartData} barGap={2} margin={{ top: 20 }}>
                 <CartesianGrid vertical={false} strokeDasharray="3 3" />
                 <XAxis
                     dataKey="model"
@@ -60,7 +60,7 @@ export function GapChart({ data }: { data: ModelResult[] }) {
                                             {chartConfig[name as keyof typeof chartConfig]?.label ??
                                                 name}
                                         </span>
-                                        <span className="text-foreground font-mono font-medium tabular-nums">
+                                        <span className="text-foreground font-sans font-medium tabular-nums">
                                             {value}%
                                         </span>
                                     </div>
@@ -70,8 +70,24 @@ export function GapChart({ data }: { data: ModelResult[] }) {
                     }
                 />
                 <ChartLegend content={<ChartLegendContent />} />
-                <Bar dataKey="en" fill="var(--color-en)" radius={[4, 4, 0, 0]} barSize={28} />
-                <Bar dataKey="ru" fill="var(--color-ru)" radius={[4, 4, 0, 0]} barSize={28} />
+                <Bar dataKey="en" fill="var(--color-en)" radius={[4, 4, 0, 0]} barSize={28}>
+                    <LabelList
+                        position="top"
+                        offset={8}
+                        className="fill-foreground"
+                        fontSize={11}
+                        formatter={(v: number) => `${v}%`}
+                    />
+                </Bar>
+                <Bar dataKey="ru" fill="var(--color-ru)" radius={[4, 4, 0, 0]} barSize={28}>
+                    <LabelList
+                        position="top"
+                        offset={8}
+                        className="fill-foreground"
+                        fontSize={11}
+                        formatter={(v: number) => `${v}%`}
+                    />
+                </Bar>
             </BarChart>
         </ChartContainer>
     );
