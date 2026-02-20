@@ -157,7 +157,7 @@ export default function Home() {
                     <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
                         <span>Original questions — no training-data overlap</span>
                         <span className="hidden sm:inline">&middot;</span>
-                        <span>Deterministic — every run is reproducible</span>
+                        <span>Fixed settings — every run uses the same config</span>
                         <span className="hidden sm:inline">&middot;</span>
                         <span>
                             <a
