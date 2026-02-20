@@ -12,8 +12,8 @@ import {
 import type { ModelResult } from "@/lib/data/report";
 
 const chartConfig = {
-    en: { label: "English", color: "oklch(0.52 0.16 250)" },
-    ru: { label: "Russian", color: "oklch(0.64 0.19 35)" }
+    en: { label: "English", color: "oklch(0.65 0.10 250)" },
+    ru: { label: "Russian", color: "oklch(0.58 0.20 40)" }
 } satisfies ChartConfig;
 
 function shortName(name: string): string {
