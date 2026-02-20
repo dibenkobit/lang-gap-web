@@ -86,32 +86,56 @@ export default function Home() {
                 </section>
 
                 {/* Benchmark */}
-                <section id="last-run" className="scroll-mt-16 mt-10 pt-10 border-t">
+                <section id="last-run" className="scroll-mt-16 mt-16">
                     <BenchmarkRun report={latestReport} />
                 </section>
 
                 {/* Methodology */}
-                <section id="methodology" className="scroll-mt-16 mt-10 pt-10 border-t">
-                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                <section id="methodology" className="scroll-mt-16 mt-16">
+                    <h2 className="text-lg font-semibold tracking-tight">
                         Methodology
-                    </p>
-                    <p className="text-sm text-muted-foreground mt-3">
-                        Zero contamination · Sandbox execution · temperature=0
-                    </p>
-                    <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 text-sm mt-4">
-                        <dt className="text-muted-foreground">Questions</dt>
-                        <dd>
-                            {latestReport.questionCount.total} original ·{" "}
-                            {latestReport.questionCount.coding} coding,{" "}
-                            {latestReport.questionCount.reasoning} reasoning
-                        </dd>
-                        <dt className="text-muted-foreground">Source</dt>
-                        <dd>Written from scratch — no dataset overlap, no leakage</dd>
-                        <dt className="text-muted-foreground">Evaluation</dt>
-                        <dd>Sandbox execution + deterministic answer matching</dd>
-                        <dt className="text-muted-foreground">Controls</dt>
-                        <dd>temperature=0, routed via OpenRouter for consistency</dd>
-                    </dl>
+                    </h2>
+
+                    <div className="flex flex-wrap gap-2 mt-3">
+                        <span className="inline-flex items-center rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium">
+                            Zero contamination
+                        </span>
+                        <span className="inline-flex items-center rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium">
+                            Sandbox execution
+                        </span>
+                        <span className="inline-flex items-center rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium">
+                            temperature=0
+                        </span>
+                    </div>
+
+                    <div className="mt-4 rounded-xl border bg-muted/30 divide-y">
+                        <div className="px-4 py-3 flex gap-4 text-sm">
+                            <span className="font-medium shrink-0 w-20">Questions</span>
+                            <span className="text-muted-foreground">
+                                {latestReport.questionCount.total} original &middot;{" "}
+                                {latestReport.questionCount.coding} coding,{" "}
+                                {latestReport.questionCount.reasoning} reasoning
+                            </span>
+                        </div>
+                        <div className="px-4 py-3 flex gap-4 text-sm">
+                            <span className="font-medium shrink-0 w-20">Source</span>
+                            <span className="text-muted-foreground">
+                                Written from scratch — no dataset overlap, no leakage
+                            </span>
+                        </div>
+                        <div className="px-4 py-3 flex gap-4 text-sm">
+                            <span className="font-medium shrink-0 w-20">Evaluation</span>
+                            <span className="text-muted-foreground">
+                                Sandbox execution + deterministic answer matching
+                            </span>
+                        </div>
+                        <div className="px-4 py-3 flex gap-4 text-sm">
+                            <span className="font-medium shrink-0 w-20">Controls</span>
+                            <span className="text-muted-foreground">
+                                temperature=0, routed via OpenRouter for consistency
+                            </span>
+                        </div>
+                    </div>
                 </section>
             </div>
         </div>
