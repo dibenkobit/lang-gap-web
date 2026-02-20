@@ -22,6 +22,7 @@ export type ReportCategory = {
 export type BenchmarkReport = {
     id: string;
     generatedAt: string;
+    author: string;
     modelCount: number;
     questionCount: { coding: number; reasoning: number; total: number };
     categories: ReportCategory[];
@@ -60,6 +61,7 @@ function row(
 export const latestReport: BenchmarkReport = {
     id: "62a9c4dd9b28",
     generatedAt: "2026-02-20T13:49:09.604718+00:00",
+    author: "dibenkobit",
     modelCount: 6,
     questionCount: { coding: 5, reasoning: 0, total: 5 },
     categories: [

@@ -19,25 +19,45 @@ export function BenchmarkTable({ report }: { report: BenchmarkReport }) {
     }
 
     return (
-        <Tabs defaultValue={defaultTab}>
-            <TabsList variant="line">
+        <div className="space-y-8">
+            <Tabs defaultValue={defaultTab}>
+                <div className="border-b pb-2 mb-6">
+                    <TabsList variant="line">
+                        {visibleCategories.map((category) => (
+                            <TabsTrigger key={category.name} value={category.name}>
+                                {category.name}
+                                <span className="text-muted-foreground ml-1.5 text-xs tabular-nums">
+                                    {category.questionCount}
+                                </span>
+                            </TabsTrigger>
+                        ))}
+                    </TabsList>
+                </div>
                 {visibleCategories.map((category) => (
-                    <TabsTrigger key={category.name} value={category.name}>
-                        {category.name}
-                        <span className="text-muted-foreground ml-1 text-xs tabular-nums">
-                            {category.questionCount}
-                        </span>
-                    </TabsTrigger>
+                    <TabsContent key={category.name} value={category.name} className="space-y-6">
+                        <GapChart data={category.results} />
+                        <div className="rounded-lg border">
+                            <DataTable
+                                columns={columns}
+                                data={category.results}
+                                caption={
+                                    <>
+                                        run #{report.id} · ran by{" "}
+                                        <a
+                                            href={`https://github.com/${report.author}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="hover:text-foreground transition-colors"
+                                        >
+                                            @{report.author}
+                                        </a>
+                                    </>
+                                }
+                            />
+                        </div>
+                    </TabsContent>
                 ))}
-            </TabsList>
-            {visibleCategories.map((category) => (
-                <TabsContent key={category.name} value={category.name} className="space-y-6">
-                    <GapChart data={category.results} />
-                    <div className="rounded-lg border">
-                        <DataTable columns={columns} data={category.results} />
-                    </div>
-                </TabsContent>
-            ))}
-        </Tabs>
+            </Tabs>
+        </div>
     );
 }
