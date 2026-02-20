@@ -158,17 +158,6 @@ export default function Home() {
                         <span>Original questions — no training-data overlap</span>
                         <span className="hidden sm:inline">&middot;</span>
                         <span>Fixed settings — every run uses the same config</span>
-                        <span className="hidden sm:inline">&middot;</span>
-                        <span>
-                            <a
-                                href="https://github.com/dibenkobit/lang-gap"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="underline underline-offset-4 hover:text-foreground transition-colors"
-                            >
-                                Fully open source
-                            </a>
-                        </span>
                     </div>
                 </section>
             </div>
