@@ -130,12 +130,12 @@ export default function Home() {
                         </div>
                         <div className="rounded-xl border px-4 py-4 space-y-1.5">
                             <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                                4 &middot; The Gap
+                                4 &middot; Scoring
                             </p>
                             <p className="text-sm">
-                                For each model: EN accuracy minus RU accuracy.
-                                A small gap means the model handles Russian well.
-                                A large gap means it degrades.
+                                For each model we report EN accuracy, RU accuracy,
+                                and the gap between them. A gap of 0% means the model
+                                performs equally in both languages.
                             </p>
                         </div>
                     </div>
