@@ -22,20 +22,20 @@ const navLinks = [
 export function Header() {
     return (
         <header className="px-6 pt-4 md:px-12 md:pt-5 lg:px-16 lg:pt-5">
-            <nav className="mx-auto max-w-3xl flex items-baseline justify-between">
-                <div className="flex items-baseline gap-8">
+            <nav className="mx-auto max-w-3xl flex items-center justify-between font-mono text-xs leading-8">
+                <div className="flex items-center gap-8">
                     <Link
                         href="/"
-                        className="text-sm font-semibold tracking-tight hover:text-foreground/80 transition-colors"
+                        className="font-sans text-sm leading-8 font-semibold tracking-tight hover:text-foreground/80 transition-colors"
                     >
                         Lang Gap
                     </Link>
-                    <div className="hidden sm:flex items-baseline gap-5">
+                    <div className="hidden sm:flex items-center gap-5">
                         {navLinks.map((link) => (
                             <a
                                 key={link.href}
                                 href={link.href}
-                                className="text-xs text-muted-foreground font-mono hover:text-foreground transition-colors"
+                                className="text-muted-foreground hover:text-foreground transition-colors"
                             >
                                 {link.label}
                             </a>
@@ -46,7 +46,7 @@ export function Header() {
                     href="https://github.com/dibenkobit/lang-gap"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-xs text-muted-foreground font-mono hover:text-foreground transition-colors"
+                    className="flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors"
                 >
                     <GitHubIcon className="size-3.5" />
                     <span>Star us</span>
