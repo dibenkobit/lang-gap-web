@@ -47,37 +47,38 @@ export default function Home() {
                     </div>
 
                     {stats && (
-                        <div className="grid grid-cols-3 gap-3 sm:gap-4">
-                            <div className="rounded-lg border px-3 py-3 sm:px-4">
-                                <p className="text-xl sm:text-2xl font-bold tabular-nums">
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+                            <div className="rounded-xl border bg-muted/50 px-4 py-4 space-y-1">
+                                <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                                    Average Gap
+                                </p>
+                                <p className="text-2xl sm:text-3xl font-bold tabular-nums font-mono">
                                     {stats.avg}%
                                 </p>
-                                <p className="text-[11px] sm:text-xs text-muted-foreground mt-1">
-                                    Average gap
+                                <p className="text-xs text-muted-foreground">
+                                    across {latestReport.modelCount} models
                                 </p>
                             </div>
-                            <div className="rounded-lg border px-3 py-3 sm:px-4">
-                                <p className="text-xl sm:text-2xl font-bold tabular-nums">
+                            <div className="rounded-xl border bg-emerald-50/60 px-4 py-4 space-y-1">
+                                <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                                    Smallest Gap
+                                </p>
+                                <p className="text-2xl sm:text-3xl font-bold tabular-nums font-mono">
                                     {stats.best.delta}%
                                 </p>
-                                <p className="text-[11px] sm:text-xs text-muted-foreground mt-1 truncate">
-                                    Smallest
-                                    <span className="hidden sm:inline">
-                                        {" · "}
-                                        {stats.best.displayName}
-                                    </span>
+                                <p className="text-xs text-muted-foreground">
+                                    {stats.best.displayName}
                                 </p>
                             </div>
-                            <div className="rounded-lg border px-3 py-3 sm:px-4">
-                                <p className="text-xl sm:text-2xl font-bold tabular-nums">
+                            <div className="rounded-xl border bg-orange-50/60 px-4 py-4 space-y-1">
+                                <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                                    Largest Gap
+                                </p>
+                                <p className="text-2xl sm:text-3xl font-bold tabular-nums font-mono">
                                     {stats.worst.delta}%
                                 </p>
-                                <p className="text-[11px] sm:text-xs text-muted-foreground mt-1 truncate">
-                                    Largest
-                                    <span className="hidden sm:inline">
-                                        {" · "}
-                                        {stats.worst.displayName}
-                                    </span>
+                                <p className="text-xs text-muted-foreground">
+                                    {stats.worst.displayName}
                                 </p>
                             </div>
                         </div>
