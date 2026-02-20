@@ -86,12 +86,12 @@ export default function Home() {
                 </section>
 
                 {/* Benchmark */}
-                <section id="last-run" className="scroll-mt-16 mt-16">
+                <section id="last-run" className="scroll-mt-28 mt-16">
                     <BenchmarkRun report={latestReport} />
                 </section>
 
                 {/* How It Works */}
-                <section id="methodology" className="scroll-mt-16 mt-16">
+                <section id="methodology" className="scroll-mt-28 mt-16">
                     <h2 className="text-lg font-semibold tracking-tight">
                         How It Works
                     </h2>
