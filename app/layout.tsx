@@ -1,3 +1,4 @@
+import { Header } from "@/components/header";
 import type { Metadata } from "next";
 import { JetBrains_Mono, Lora } from "next/font/google";
 import "./globals.css";
@@ -29,8 +30,9 @@ export default function RootLayout({
     return (
         <html lang="en" className={`${lora.variable} ${jetbrainsMono.variable}`}>
             <body className="antialiased flex min-h-screen flex-col">
+                <Header />
                 <main className="flex-1">{children}</main>
-                <footer className="px-6 pb-6 md:px-12">
+                <footer className="px-6 pb-6 md:px-12 lg:px-16">
                     <div className="mx-auto max-w-3xl flex items-baseline justify-between text-xs text-muted-foreground font-mono">
                         <span>
                             Made by{" "}

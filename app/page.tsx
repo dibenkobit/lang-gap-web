@@ -13,10 +13,9 @@ export default function Home() {
     const r = latestReport;
 
     return (
-        <div className="p-6 md:p-12 lg:p-16">
+        <div className="px-6 py-6 md:px-12 md:py-10 lg:px-16 lg:py-10">
             <div className="mx-auto max-w-3xl space-y-10">
-                <header className="space-y-4">
-                    <h1 className="text-2xl font-semibold tracking-tight">Lang Gap</h1>
+                <section id="methodology" className="scroll-mt-16">
                     <aside className="rounded-lg bg-muted/40 px-4 py-3 space-y-1.5">
                         <p className="text-xs font-medium text-muted-foreground">Methodology</p>
                         <p className="text-xs text-muted-foreground leading-relaxed">
@@ -26,7 +25,7 @@ export default function Home() {
                             temperature=0.
                         </p>
                     </aside>
-                </header>
+                </section>
 
                 <section className="space-y-6">
                     <p className="text-sm text-muted-foreground">
