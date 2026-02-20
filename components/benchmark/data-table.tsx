@@ -12,7 +12,6 @@ import { useState } from "react";
 import {
     Table,
     TableBody,
-    TableCaption,
     TableCell,
     TableHead,
     TableHeader,
@@ -22,10 +21,12 @@ import {
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[];
     data: TData[];
-    caption?: React.ReactNode;
 }
 
-export function DataTable<TData, TValue>({ columns, data, caption }: DataTableProps<TData, TValue>) {
+export function DataTable<TData, TValue>({
+    columns,
+    data
+}: DataTableProps<TData, TValue>) {
     const [sorting, setSorting] = useState<SortingState>([]);
 
     const table = useReactTable({
@@ -74,11 +75,6 @@ export function DataTable<TData, TValue>({ columns, data, caption }: DataTablePr
                     </TableRow>
                 )}
             </TableBody>
-            {caption && (
-                <TableCaption className="text-right text-xs font-mono border-t mt-0 pt-2 mb-2 mr-1">
-                    {caption}
-                </TableCaption>
-            )}
         </Table>
     );
 }

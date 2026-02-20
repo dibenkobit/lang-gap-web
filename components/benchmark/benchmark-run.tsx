@@ -28,14 +28,17 @@ export function BenchmarkRun({ report }: { report: BenchmarkReport }) {
 
     return (
         <div className="space-y-5">
-            <div className="space-y-1">
-                <h2 className="text-lg font-semibold tracking-tight">
-                    Benchmark Results
-                </h2>
-                <p className="text-sm text-muted-foreground">
-                    Last run {formatDate(report.generatedAt)}
-                </p>
-            </div>
+            <p className="text-sm text-muted-foreground">
+                Last run {formatDate(report.generatedAt)} by{" "}
+                <a
+                    href={`https://github.com/${report.author}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-foreground transition-colors"
+                >
+                    @{report.author}
+                </a>
+            </p>
 
             <Tabs defaultValue={defaultTab}>
                 <TabsList variant="line" className="border-b pb-2 mb-5">
@@ -51,23 +54,7 @@ export function BenchmarkRun({ report }: { report: BenchmarkReport }) {
                 {visibleCategories.map((category) => (
                     <TabsContent key={category.name} value={category.name} className="space-y-5">
                         <GapChart data={category.results} />
-                        <DataTable
-                            columns={columns}
-                            data={category.results}
-                            caption={
-                                <>
-                                    {formatDate(report.generatedAt)} · ran by{" "}
-                                    <a
-                                        href={`https://github.com/${report.author}`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="hover:text-foreground transition-colors"
-                                    >
-                                        @{report.author}
-                                    </a>
-                                </>
-                            }
-                        />
+                        <DataTable columns={columns} data={category.results} />
                     </TabsContent>
                 ))}
             </Tabs>

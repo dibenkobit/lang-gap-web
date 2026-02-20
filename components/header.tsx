@@ -10,7 +10,7 @@ function GitHubIcon({ className }: { className?: string }) {
 
 const navLinks = [
     { label: "Benchmark", href: "#last-run" },
-    { label: "Methodology", href: "#methodology" }
+    { label: "How It Works", href: "#methodology" }
 ];
 
 export function Header() {

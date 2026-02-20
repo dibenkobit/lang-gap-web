@@ -56,7 +56,7 @@ export default function Home() {
                                     {stats.avg}%
                                 </p>
                                 <p className="text-xs text-muted-foreground">
-                                    across {latestReport.modelCount} models
+                                    across all models
                                 </p>
                             </div>
                             <div className="rounded-xl border bg-emerald-50/60 px-4 py-4 space-y-1">
@@ -90,74 +90,43 @@ export default function Home() {
                     <BenchmarkRun report={latestReport} />
                 </section>
 
-                {/* Methodology */}
+                {/* How It Works */}
                 <section id="methodology" className="scroll-mt-16 mt-16">
                     <h2 className="text-lg font-semibold tracking-tight">
                         How It Works
                     </h2>
-                    <p className="text-sm text-muted-foreground mt-1 max-w-lg">
-                        Every model gets the same questions in English and Russian.
-                        We compare how many each gets right.
-                    </p>
 
-                    {/* Pipeline */}
-                    <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-3">
                         <div className="rounded-xl border px-4 py-4 space-y-1.5">
                             <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                                1 &middot; Questions
+                                Questions
                             </p>
                             <p className="text-sm">
-                                {latestReport.questionCount.coding} coding
-                                + {latestReport.questionCount.reasoning} reasoning
-                                problems, written from scratch. Russian
-                                versions are native — not machine-translated.
+                                Original problems — not pulled from existing
+                                datasets. Russian versions are written natively,
+                                not machine-translated.
                             </p>
                         </div>
                         <div className="rounded-xl border px-4 py-4 space-y-1.5">
                             <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                                2 &middot; Prompting
+                                Evaluation
                             </p>
                             <p className="text-sm">
-                                Every question goes to every model through{" "}
-                                <a
-                                    href="https://openrouter.ai"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="underline underline-offset-4 hover:text-foreground/80 transition-colors"
-                                >
-                                    OpenRouter
-                                </a>
-                                . Same provider, same settings,{" "}
-                                <span className="font-mono text-xs">temperature=0</span>.
+                                Coding answers run against test cases. Reasoning
+                                answers are checked against known correct values.
+                                All grading is automatic.
                             </p>
                         </div>
                         <div className="rounded-xl border px-4 py-4 space-y-1.5">
                             <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                                3 &middot; Evaluation
+                                Controls
                             </p>
                             <p className="text-sm">
-                                Coding answers are executed against test cases
-                                in a sandbox. Reasoning answers are compared to
-                                known correct values. No LLM-as-judge.
+                                All models are called through the same API with
+                                identical settings. Nothing varies between
+                                languages except the prompt.
                             </p>
                         </div>
-                        <div className="rounded-xl border px-4 py-4 space-y-1.5">
-                            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                                4 &middot; Scoring
-                            </p>
-                            <p className="text-sm">
-                                For each model we report EN accuracy, RU accuracy,
-                                and the gap between them. A gap of 0% means the model
-                                performs equally in both languages.
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Trust signals */}
-                    <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
-                        <span>Original questions — no training-data overlap</span>
-                        <span className="hidden sm:inline">&middot;</span>
-                        <span>Fixed settings — every run uses the same config</span>
                     </div>
                 </section>
             </div>
