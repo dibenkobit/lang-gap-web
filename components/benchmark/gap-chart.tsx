@@ -7,20 +7,20 @@ import {
     ChartLegend,
     ChartLegendContent,
     ChartTooltip,
-    ChartTooltipContent,
+    ChartTooltipContent
 } from "@/components/ui/chart";
 import type { ModelResult } from "@/lib/data/report";
 
 const chartConfig = {
     en: { label: "English", color: "oklch(0.55 0.15 250)" },
-    ru: { label: "Russian", color: "oklch(0.65 0.18 35)" },
+    ru: { label: "Russian", color: "oklch(0.65 0.18 35)" }
 } satisfies ChartConfig;
 
 export function GapChart({ data }: { data: ModelResult[] }) {
     const chartData = data.map((r) => ({
         model: r.displayName,
         en: r.en.percentage,
-        ru: r.ru.percentage,
+        ru: r.ru.percentage
     }));
 
     return (
@@ -52,14 +52,13 @@ export function GapChart({ data }: { data: ModelResult[] }) {
                                     <div
                                         className="h-2.5 w-2.5 shrink-0 rounded-[2px]"
                                         style={{
-                                            backgroundColor: `var(--color-${name})`,
+                                            backgroundColor: `var(--color-${name})`
                                         }}
                                     />
                                     <div className="flex flex-1 items-center justify-between leading-none">
                                         <span className="text-muted-foreground">
-                                            {chartConfig[
-                                                name as keyof typeof chartConfig
-                                            ]?.label ?? name}
+                                            {chartConfig[name as keyof typeof chartConfig]?.label ??
+                                                name}
                                         </span>
                                         <span className="text-foreground font-mono font-medium tabular-nums">
                                             {value}%

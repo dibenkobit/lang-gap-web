@@ -6,23 +6,23 @@ const lora = Lora({
     variable: "--font-lora",
     subsets: ["latin"],
     weight: ["400", "500", "600", "700"],
-    style: ["normal", "italic"],
+    style: ["normal", "italic"]
 });
 
 const jetbrainsMono = JetBrains_Mono({
     variable: "--font-jetbrains-mono",
     subsets: ["latin"],
-    weight: ["400", "500", "600", "700"],
+    weight: ["400", "500", "600", "700"]
 });
 
 export const metadata: Metadata = {
     title: "Lang Gap — LLM Language Benchmark",
     description:
-        "How much do LLMs degrade outside English? Identical questions in English & Russian, compared across top models.",
+        "How much do LLMs degrade outside English? Identical questions in English & Russian, compared across top models."
 };
 
 export default function RootLayout({
-    children,
+    children
 }: Readonly<{
     children: React.ReactNode;
 }>) {

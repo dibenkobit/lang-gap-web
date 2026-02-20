@@ -33,7 +33,7 @@ const MODEL_INFO: Record<string, { name: string; provider: string }> = {
     "gpt-5.2": { name: "GPT-5.2", provider: "OpenAI" },
     "gpt-4.1": { name: "GPT-4.1", provider: "OpenAI" },
     "gemini-2.5-pro": { name: "Gemini 2.5 Pro", provider: "Google" },
-    "deepseek-r1": { name: "DeepSeek R1", provider: "DeepSeek" },
+    "deepseek-r1": { name: "DeepSeek R1", provider: "DeepSeek" }
 };
 
 function row(
@@ -44,7 +44,7 @@ function row(
     ruPct: number,
     ruCorrect: number,
     ruTotal: number,
-    delta: number,
+    delta: number
 ): ModelResult {
     const info = MODEL_INFO[model] ?? { name: model, provider: "Unknown" };
     return {
@@ -53,7 +53,7 @@ function row(
         provider: info.provider,
         en: { percentage: enPct, correct: enCorrect, total: enTotal },
         ru: { percentage: ruPct, correct: ruCorrect, total: ruTotal },
-        delta,
+        delta
     };
 }
 
@@ -72,8 +72,8 @@ export const latestReport: BenchmarkReport = {
                 row("gpt-5.2", 100, 5, 5, 100, 5, 5, 0),
                 row("gpt-4.1", 100, 5, 5, 100, 5, 5, 0),
                 row("gemini-2.5-pro", 100, 5, 5, 100, 5, 5, 0),
-                row("deepseek-r1", 100, 5, 5, 100, 5, 5, 0),
-            ],
+                row("deepseek-r1", 100, 5, 5, 100, 5, 5, 0)
+            ]
         },
         {
             name: "Overall",
@@ -84,8 +84,8 @@ export const latestReport: BenchmarkReport = {
                 row("gpt-5.2", 100, 5, 5, 100, 5, 5, 0),
                 row("gpt-4.1", 100, 5, 5, 100, 5, 5, 0),
                 row("gemini-2.5-pro", 100, 5, 5, 100, 5, 5, 0),
-                row("deepseek-r1", 100, 5, 5, 100, 5, 5, 0),
-            ],
-        },
-    ],
+                row("deepseek-r1", 100, 5, 5, 100, 5, 5, 0)
+            ]
+        }
+    ]
 };

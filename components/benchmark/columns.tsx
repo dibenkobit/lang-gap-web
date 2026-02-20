@@ -26,7 +26,7 @@ function ScoreCell({ percentage, correct, total }: ModelScore) {
 function SortableHeader({
     column,
     children,
-    className,
+    className
 }: {
     column: Column<ModelResult, unknown>;
     children: React.ReactNode;
@@ -53,7 +53,7 @@ export const columns: ColumnDef<ModelResult>[] = [
                 <span className="font-medium">{row.original.displayName}</span>
                 <span className="text-muted-foreground ml-2 text-xs">{row.original.provider}</span>
             </div>
-        ),
+        )
     },
     {
         id: "en",
@@ -63,7 +63,7 @@ export const columns: ColumnDef<ModelResult>[] = [
                 <SortableHeader column={column}>EN</SortableHeader>
             </div>
         ),
-        cell: ({ row }) => <ScoreCell {...row.original.en} />,
+        cell: ({ row }) => <ScoreCell {...row.original.en} />
     },
     {
         id: "ru",
@@ -73,7 +73,7 @@ export const columns: ColumnDef<ModelResult>[] = [
                 <SortableHeader column={column}>RU</SortableHeader>
             </div>
         ),
-        cell: ({ row }) => <ScoreCell {...row.original.ru} />,
+        cell: ({ row }) => <ScoreCell {...row.original.ru} />
     },
     {
         accessorKey: "delta",
@@ -91,6 +91,6 @@ export const columns: ColumnDef<ModelResult>[] = [
                     </Badge>
                 </div>
             );
-        },
-    },
+        }
+    }
 ];

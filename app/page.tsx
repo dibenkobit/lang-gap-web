@@ -5,7 +5,7 @@ function formatDate(iso: string): string {
     return new Date(iso).toLocaleDateString("en-US", {
         month: "short",
         day: "numeric",
-        year: "numeric",
+        year: "numeric"
     });
 }
 
@@ -14,7 +14,7 @@ export default function Home() {
 
     const questionBreakdown = [
         r.questionCount.coding > 0 && `${r.questionCount.coding} coding`,
-        r.questionCount.reasoning > 0 && `${r.questionCount.reasoning} reasoning`,
+        r.questionCount.reasoning > 0 && `${r.questionCount.reasoning} reasoning`
     ]
         .filter(Boolean)
         .join(" + ");
@@ -58,7 +58,6 @@ export default function Home() {
                     </p>
                 </footer>
             </div>
-
         </div>
     );
 }
