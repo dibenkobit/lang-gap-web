@@ -16,6 +16,10 @@ const chartConfig = {
     ru: { label: "Russian", color: "oklch(0.64 0.19 35)" }
 } satisfies ChartConfig;
 
+function shortName(name: string): string {
+    return name.replace("Claude ", "").replace("DeepSeek ", "DS ");
+}
+
 export function GapChart({ data }: { data: ModelResult[] }) {
     const chartData = data.map((r) => ({
         model: r.displayName,
@@ -23,26 +27,34 @@ export function GapChart({ data }: { data: ModelResult[] }) {
         ru: r.ru.percentage
     }));
 
+    const allValues = data.flatMap((r) => [r.en.percentage, r.ru.percentage]);
+    const minValue = Math.min(...allValues);
+    const yMin = Math.max(0, Math.floor((minValue - 5) / 10) * 10);
+
+    const barSize = Math.max(14, Math.min(28, Math.floor(220 / data.length)));
+    const needsAngle = data.length > 8;
+
     return (
-        <ChartContainer config={chartConfig} className="h-[300px] w-full">
-            <BarChart data={chartData} barGap={2} margin={{ top: 20 }}>
+        <ChartContainer config={chartConfig} className="h-[340px] w-full">
+            <BarChart data={chartData} barGap={2} margin={{ top: 20, bottom: needsAngle ? 20 : 0 }}>
                 <CartesianGrid vertical={false} strokeDasharray="3 3" />
                 <XAxis
                     dataKey="model"
                     tickLine={false}
                     axisLine={false}
-                    tick={{ fontSize: 12 }}
-                    tickFormatter={(value: string) =>
-                        value.replace("Claude ", "").replace(" Pro", "")
-                    }
+                    tick={{ fontSize: 11 }}
+                    tickFormatter={shortName}
+                    angle={needsAngle ? -30 : 0}
+                    textAnchor={needsAngle ? "end" : "middle"}
+                    height={needsAngle ? 60 : 30}
                 />
                 <YAxis
-                    domain={[0, 100]}
+                    domain={[yMin, 100]}
                     tickLine={false}
                     axisLine={false}
                     tickFormatter={(v: number) => `${v}%`}
-                    tick={{ fontSize: 12 }}
-                    width={45}
+                    tick={{ fontSize: 11 }}
+                    width={42}
                 />
                 <ChartTooltip
                     content={
@@ -70,21 +82,21 @@ export function GapChart({ data }: { data: ModelResult[] }) {
                     }
                 />
                 <ChartLegend content={<ChartLegendContent />} />
-                <Bar dataKey="en" fill="var(--color-en)" radius={[4, 4, 0, 0]} barSize={28}>
+                <Bar dataKey="en" fill="var(--color-en)" radius={[4, 4, 0, 0]} barSize={barSize}>
                     <LabelList
                         position="top"
-                        offset={8}
+                        offset={6}
                         className="fill-foreground"
-                        fontSize={11}
+                        fontSize={10}
                         formatter={(v: number) => `${v}%`}
                     />
                 </Bar>
-                <Bar dataKey="ru" fill="var(--color-ru)" radius={[4, 4, 0, 0]} barSize={28}>
+                <Bar dataKey="ru" fill="var(--color-ru)" radius={[4, 4, 0, 0]} barSize={barSize}>
                     <LabelList
                         position="top"
-                        offset={8}
+                        offset={6}
                         className="fill-foreground"
-                        fontSize={11}
+                        fontSize={10}
                         formatter={(v: number) => `${v}%`}
                     />
                 </Bar>
