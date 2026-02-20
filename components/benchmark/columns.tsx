@@ -5,6 +5,13 @@ import { ArrowUpDown } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import type { ModelResult, ModelScore } from "@/lib/data/report";
 
+const PROVIDER_COLORS: Record<string, string> = {
+    Anthropic: "bg-orange-400",
+    OpenAI: "bg-emerald-400",
+    Google: "bg-blue-400",
+    DeepSeek: "bg-violet-400"
+};
+
 function gapColor(delta: number): string {
     if (delta === 0) return "border-emerald-200 bg-emerald-50 text-emerald-700";
     if (delta <= 5) return "border-amber-200 bg-amber-50 text-amber-700";
@@ -14,7 +21,7 @@ function gapColor(delta: number): string {
 
 function ScoreCell({ percentage, correct, total }: ModelScore) {
     return (
-        <div className="text-right font-mono">
+        <div className="text-right font-sans">
             <span className="font-medium">{percentage}%</span>
             <span className="text-muted-foreground ml-1.5 text-xs">
                 {correct}/{total}
@@ -49,9 +56,14 @@ export const columns: ColumnDef<ModelResult>[] = [
         accessorKey: "displayName",
         header: ({ column }) => <SortableHeader column={column}>Model</SortableHeader>,
         cell: ({ row }) => (
-            <div>
+            <div className="flex items-center gap-2">
+                <span
+                    className={`size-2 rounded-full shrink-0 ${PROVIDER_COLORS[row.original.provider] ?? "bg-gray-400"}`}
+                />
                 <span className="font-medium">{row.original.displayName}</span>
-                <span className="text-muted-foreground ml-2 text-xs">{row.original.provider}</span>
+                <span className="text-muted-foreground text-xs hidden sm:inline">
+                    {row.original.provider}
+                </span>
             </div>
         )
     },
@@ -86,7 +98,7 @@ export const columns: ColumnDef<ModelResult>[] = [
             const delta = row.original.delta;
             return (
                 <div className="flex justify-end">
-                    <Badge variant="outline" className={`font-mono text-xs ${gapColor(delta)}`}>
+                    <Badge variant="outline" className={`font-sans text-xs ${gapColor(delta)}`}>
                         {delta === 0 ? "0%" : `\u2212${delta}%`}
                     </Badge>
                 </div>
