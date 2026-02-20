@@ -26,8 +26,8 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-            <body className={`${instrumentSerif.variable} ${ibmPlexMono.variable} antialiased`}>
+        <html lang="en" className={`${instrumentSerif.variable} ${ibmPlexMono.variable}`}>
+            <body className="antialiased">
                 {children}
             </body>
         </html>
