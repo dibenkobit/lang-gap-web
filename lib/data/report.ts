@@ -66,7 +66,7 @@ export const latestReport: BenchmarkReport = {
     questionCount: { coding: 5, reasoning: 0, total: 5 },
     categories: [
         {
-            name: "Coding",
+            name: "Overall",
             questionCount: 5,
             results: [
                 row("claude-opus-4.6", 100, 5, 5, 100, 5, 5, 0),
@@ -78,7 +78,7 @@ export const latestReport: BenchmarkReport = {
             ]
         },
         {
-            name: "Overall",
+            name: "Coding",
             questionCount: 5,
             results: [
                 row("claude-opus-4.6", 100, 5, 5, 100, 5, 5, 0),
