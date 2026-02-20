@@ -7,7 +7,7 @@ export default function Home() {
                     The distance between what you <em>know</em> and what you
                     can <em>say</em> — that's the gap we're closing.
                 </p>
-                <p className="font-mono text-sm text-muted-foreground">
+                <p className="font-mono text-muted-foreground">
                     system.status: online — fonts.loaded: true —
                     scanlines.active: true
                 </p>
